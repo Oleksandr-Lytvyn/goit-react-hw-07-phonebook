@@ -11,18 +11,18 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
 
-const persistConfig = {
-  key: 'root',
-  storage,
-};
+// const persistConfig = {
+//   key: 'root',
+//   storage,
+// };
 
-const persistedListReducer = persistReducer(persistConfig, listReducer);
+// const persistedListReducer = persistReducer(persistConfig, listReducer);
 
 export const store = configureStore({
   reducer: {
-    contacts: persistedListReducer,
+    contacts: listReducer,
     filter: filterReducer,
   },
   middleware: getDefaultMiddleware({
