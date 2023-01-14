@@ -1,5 +1,5 @@
 import css from './InputForm.module.css';
-import { addContact } from '../../redux/listSlice';
+import { addContact } from '../../redux/operations';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
@@ -7,13 +7,17 @@ export function InputForm() {
   const dispatch = useDispatch();
   const contactList = useSelector(state => state.contacts.data);
   function onSubmit(event) {
-    const name = event.target.elements.name.value;
-    const number = event.target.elements.number.value;
-    if (contactList.find(cont => cont.name === name)) {
-      alert(`${name} is already`);
+    const newCont = {
+      name: event.target.elements.name.value,
+      number: event.target.elements.number.value,
+    };
+    // const name = event.target.elements.name.value;
+    // const number = event.target.elements.number.value;
+    if (contactList.find(cont => cont.name === newCont.name)) {
+      alert(`${newCont.name} is already`);
       return;
     }
-    dispatch(addContact(name, number));
+    dispatch(addContact(newCont));
   }
   return (
     <form
