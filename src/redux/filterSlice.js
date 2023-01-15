@@ -10,7 +10,5 @@ const filterSlice = createSlice({
   },
 });
 
-// Генераторы экшенов
 export const { addFilter } = filterSlice.actions;
-// Редюсер слайса
 export const filterReducer = filterSlice.reducer;

@@ -11,8 +11,6 @@ export function InputForm() {
       name: event.target.elements.name.value,
       number: event.target.elements.number.value,
     };
-    // const name = event.target.elements.name.value;
-    // const number = event.target.elements.number.value;
     if (contactList.find(cont => cont.name === newCont.name)) {
       alert(`${newCont.name} is already`);
       return;
@@ -24,7 +22,6 @@ export function InputForm() {
       onSubmit={event => {
         event.preventDefault();
         onSubmit(event, addContact);
-        console.log(event.target);
         event.target.reset();
       }}
     >

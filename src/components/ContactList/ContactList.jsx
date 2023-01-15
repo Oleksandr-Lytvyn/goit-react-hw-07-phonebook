@@ -20,6 +20,7 @@ export function ContactList() {
   function delCont(submit) {
     dispatch(deleteContact(submit.target.id));
   }
+
   const filteredContacts = cont.data.filter(cont =>
     cont.name.toLowerCase().includes(fltr.toLowerCase())
   );
@@ -32,7 +33,6 @@ export function ContactList() {
           name="filter"
           onInput={event => {
             dispatch(addFilter(event.target.value));
-            // addFilter(event.target.value);
           }}
         />
         {isLoading && <b>Loading contacts...</b>}
@@ -41,7 +41,7 @@ export function ContactList() {
           {filteredContacts.map(cont => (
             <li key={cont.id} className={css.contacts_item}>
               <span>
-                {cont.name}: {cont.number}
+                {cont.name}: {cont.phone}
               </span>
               <button
                 id={cont.id}
@@ -49,7 +49,6 @@ export function ContactList() {
                 type="button"
                 onClick={submit => {
                   delCont(submit);
-                  // deleteContact(submit);
                 }}
               >
                 delete
